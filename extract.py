@@ -2,6 +2,30 @@ import pandas as pd
 import sqlite3
 
 
+def corrects_thousand_separator(file_path: str) -> str:
+    """
+    Corrige o separador de milhar em um arquivo CSV.
+    https://www.kaggle.com/datasets/gustavomodelli/forest-fires-in-brazil/discussion/457984
+
+    Args:
+        file_path (str): Caminho do arquivo CSV.
+
+    Returns:
+        str: Caminho do novo arquivo CSV corrigido.
+    """
+    df = pd.read_csv(file_path, dtype={"number": str})
+
+    df["number"] = df["number"].str.replace(".", "", regex=False)
+
+    df["number"] = df["number"].astype(int)
+
+    new_file_path = file_path.replace(".csv", "_corrected.csv")
+
+    df.to_csv(new_file_path, index=False)
+
+    return new_file_path
+
+
 def extract_data(file_path: str) -> pd.DataFrame:
     """
     Extrair dados de um arquivo CSV e retorna um DataFrame do pandas.
