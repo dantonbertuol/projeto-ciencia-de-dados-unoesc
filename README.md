@@ -12,6 +12,9 @@ Projeto de ciência de dados do curso de Ciência de Dados e IA da Universidade 
 - Plotly
 - Scikit-learn
 
+## Arquitetura do Projeto
+![Arquitetura do Projeto](architecture.png)
+
 ## Como executar o projeto
 1. Crie o ambiente virtual python e instale as dependências do projeto:
 ```bash
